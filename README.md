@@ -22,4 +22,4 @@ This is a paper plugin that with a command will spawn in all maps for the Iron S
 
 1. Download gradle 9.1.0 and java 21
 2. Run `./gradlew build` in the project directory
-3. Find the build in `app/build/libs
+3. Find the build in `build/libs`

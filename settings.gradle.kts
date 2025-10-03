@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "ironsmp_logo"
-include("app")
+include("paper_plugin")
