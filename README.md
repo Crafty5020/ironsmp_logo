@@ -3,9 +3,8 @@
 This is a paper plugin that with a command will spawn in all maps for the Iron SMP Logo.
 
 > [!NOTE]
- > This plugin will work with any map art the only requirement is to change the `plugin.yml` file.
-> [!NOTE]
- > OP is required to get maps.
+> This plugin will work with any map art the only requirement is to change the `plugin.yml` file.
+> OP is required to get maps.
 
 ## How to use?
 
