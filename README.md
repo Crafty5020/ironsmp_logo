@@ -1,6 +1,6 @@
 # Iron SMP Logo
 
-This is a paper plugin that with a command will spawn in all maps for the Iron SMP Logo.
+This is a Fabric mod that with a command will spawn in all maps for the Iron SMP Logo.
 
 > [!NOTE]
 > This plugin will work with any map art the only requirement is to change the `plugin.yml` file.
@@ -9,7 +9,7 @@ This is a paper plugin that with a command will spawn in all maps for the Iron S
 
 ## How to use?
 
-1. To add support to your logo just change this two values `in plugin.yml`.
+1. To add support to your logo just change this two values in `config.yml`.
 
   ```yml
     maps-spawned-already: 0 # Change this to the amount of maps spawned already by players and you.
