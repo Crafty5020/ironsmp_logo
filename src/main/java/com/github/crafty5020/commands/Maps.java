@@ -41,6 +41,8 @@ public class Maps {
             }
         }
 
+        // sus
+
         context.getSource().sendFeedback(() -> Text.literal("Gave maps with logo art to ").append(Objects.requireNonNull(context.getSource().getPlayer()).getName()), false);
 
         return Command.SINGLE_SUCCESS;
