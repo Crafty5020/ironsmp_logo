@@ -7,6 +7,9 @@ This is a Fabric mod that with a command will spawn in all maps for the Iron SMP
 >
 > OP is required to get maps.
 
+## Required Mods
+  1. Fabric Api
+
 ## How to use?
 
 1. To add support to your logo just run this two commands.
