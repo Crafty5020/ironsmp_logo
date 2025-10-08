@@ -3,13 +3,13 @@
 	"id": "ironsmp-logo",
 	"version": "${version}",
 	"name": "IronSMP-Logo",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This is a mod that auto spawns in all maps for your logo.",
 	"authors": [
-		"Me!"
+		"Crafty5020",
+        "reis06679"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"github": "https://github.com/Crafty5020/ironsmp_logo"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/ironsmp-logo/icon.png",
@@ -20,25 +20,12 @@
 		],
 		"client": [
 			"com.github.crafty5020.IronSMPLogoClient"
-		],
-		"fabric-datagen": [
-			"com.github.crafty5020.IronSMPLogoDataGenerator"
 		]
 	},
-	"mixins": [
-		"ironsmp-logo.mixins.json",
-		{
-			"config": "ironsmp-logo.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
 		"fabricloader": ">=0.17.2",
-		"minecraft": "~1.21.9",
+		"minecraft": "~1.21.10",
 		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"fabric-api": ">=0.135.0+1.21.10"
 	}
 }

@@ -1,5 +1,6 @@
 package com.github.crafty5020.commands;
 
+import com.github.crafty5020.commands.argument.ItemFrameDirectionArgumentType;
 import com.github.crafty5020.properties.PropertiesManager;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -33,9 +34,12 @@ public class CommandHandler {
                     .requires(source -> source.hasPermissionLevel(1))
                     .then(CommandManager.argument("player/s", EntityArgumentType.players())
                         .then(CommandManager.literal("item_frames")
-                            .then(CommandManager.argument("glow", BoolArgumentType.bool())
-                                .then(CommandManager.argument("invisible", BoolArgumentType.bool())
-                                    .then(CommandManager.argument("fixed", BoolArgumentType.bool())
+                            .then(CommandManager.argument("direction", ItemFrameDirectionArgumentType.itemDirection())
+                                .then(CommandManager.argument("glow", BoolArgumentType.bool())
+                                    .then(CommandManager.argument("invisible", BoolArgumentType.bool())
+                                        .then(CommandManager.argument("fixed", BoolArgumentType.bool())
+                                            .executes(ItemFrames::giveItemFrames)
+                                        )
                                         .executes(ItemFrames::giveItemFrames)
                                     )
                                     .executes(ItemFrames::giveItemFrames)

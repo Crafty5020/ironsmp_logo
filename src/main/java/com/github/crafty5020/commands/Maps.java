@@ -1,6 +1,5 @@
 package com.github.crafty5020.commands;
 
-import com.github.crafty5020.IronSMPLogo;
 import com.github.crafty5020.properties.PropertiesManager;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
@@ -9,7 +8,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.MapIdComponent;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.command.ServerCommandSource;
@@ -17,7 +15,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
 import java.util.Collection;
-import java.util.Objects;
 
 public class Maps {
     public static int giveMaps(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
@@ -39,11 +36,10 @@ public class Maps {
                     player.dropItem(map, true,true);
                 }
             }
+            player.sendMessageToClient(Text.literal("Gave item frames with logo art to ").append(player.getName()), false);
         }
 
-        // sus
-
-        context.getSource().sendFeedback(() -> Text.literal("Gave maps with logo art to ").append(Objects.requireNonNull(context.getSource().getPlayer()).getName()), false);
+        context.getSource().sendFeedback(() -> Text.literal("executed command by ").append(context.getSource().getName()).append(Text.literal(": gave maps with logo art")), false);
 
         return Command.SINGLE_SUCCESS;
     }

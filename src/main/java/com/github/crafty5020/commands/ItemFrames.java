@@ -1,5 +1,7 @@
 package com.github.crafty5020.commands;
 
+import com.github.crafty5020.commands.argument.ItemFrameDirectionArgumentType;
+import com.github.crafty5020.items.data.MapItemFrameDirection;
 import com.github.crafty5020.properties.PropertiesManager;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.BoolArgumentType;
@@ -7,10 +9,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.MapIdComponent;
-import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.TypedEntityData;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -20,7 +19,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
 import java.util.Collection;
-import java.util.Objects;
 
 public class ItemFrames {
 
@@ -29,6 +27,7 @@ public class ItemFrames {
         boolean glow;
         boolean invis;
         boolean fixed;
+        MapItemFrameDirection direction;
         int amountOfMaps = PropertiesManager.getAmountOfMaps();
         int mapsAlrExisting = PropertiesManager.getMapsSpawned();
 
@@ -46,6 +45,11 @@ public class ItemFrames {
             fixed = BoolArgumentType.getBool(context, "fixed");
         } catch (IllegalArgumentException e) {
             fixed = false;
+        }
+        try {
+            direction = ItemFrameDirectionArgumentType.getDirection(context, "direction");
+        } catch (IllegalArgumentException e) {
+            direction = new MapItemFrameDirection(MapItemFrameDirection.Direction.up);
         }
 
         ItemStack baseFrame;
@@ -74,6 +78,7 @@ public class ItemFrames {
 
                 frameNBT.putBoolean("Invisible", invis);
                 frameNBT.putBoolean("Fixed", fixed);
+                frameNBT.putByte("ItemRotation", ((byte) direction.itemDirectionValue()));
 
                 NbtCompound frameItemNBT = new NbtCompound();
 
@@ -97,9 +102,10 @@ public class ItemFrames {
 
 
             }
+            player.sendMessageToClient(Text.literal("Gave item frames with logo art to ").append(player.getName()), false);
         }
 
-        context.getSource().sendFeedback(() -> Text.literal("Gave maps with logo art to ").append(Objects.requireNonNull(context.getSource().getPlayer()).getName()), false);
+        context.getSource().sendFeedback(() -> Text.literal("executed command by ").append(context.getSource().getName()).append(Text.literal(": gave item frames with logo art")), false);
 
         return Command.SINGLE_SUCCESS;
     }
